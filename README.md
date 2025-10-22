@@ -1,0 +1,1 @@
+# Hacktoberfest2025stack_balanced_parentheses.py
