@@ -1,16 +1,12 @@
 def is_balanced(expr):
     stack = []
+    pairs = {')': '(', ']': '[', '}': '{'}
     for char in expr:
         if char in "([{":
             stack.append(char)
         elif char in ")]}":
-            if not stack:
+            if not stack or stack.pop() != pairs[char]:
                 return False
-            top = stack.pop()
-            if (top == '(' and char == ']') or \
-               (top == '[' and char == '}') or \
-               (top == '{' and char == ')'):  # ❌ Wrong match pairs
-                return False
-    return len(stack) == 0
+    return not stack
 
-print(is_balanced("{[()]}"))  # Expected True
+print(is_balanced("{[()]}"))
